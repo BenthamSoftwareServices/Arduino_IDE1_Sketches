@@ -1,0 +1,147 @@
+Delivered-To: steveben@gmail.com
+Received: by 2002:a05:6a11:e008:b0:2d6:6649:2d64 with SMTP id dk8csp206012pxc;
+ Thu, 1 Sep 2022 04:31:25 -0700 (PDT)
+X-Received: by 2002:a05:600c:19c6:b0:3a5:ffb3:d527 with SMTP id
+ u6-20020a05600c19c600b003a5ffb3d527mr4889767wmq.106.1662031885256; Thu, 01
+ Sep 2022 04:31:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1662031885; cv=none; d=google.com;
+ s=arc-20160816;
+ b=J0b02tEBqIeXsR2e68E+N3seOSu3wmJLOV37cUBOxLxeY+MZB3XWQ0StZzkYyd2nQF
+ AMPzPsgAUWrtJGU5FJmp4bOFDYbaGsUKPSD2pfn9oFWSHjjShjCDq0QyjN+rp7MErnxF
+ ZZ2kWu6ghLOYUX5/Mx/uZ4e4yWsoyekAfLizCiVuqURSW675/PMgTktR1FcmTc9esa3W
+ K4ghAfahVjqix0Dj71q93gLYgKP+h3WyEApsmpq5cN/csDwTQCnIh76A8i5XHp84lg9U
+ LlYvFBfdN5D0maoy2w2yfNYlkjKYcCaUeijTQagzSlBSTWlUmKuYtqiohvCoTCtgsFzy R80w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :dkim-signature; bh=BhtVm1VBWlIJGMUWG2Fq9+KtpxGBkCDsuo7c6bdALb4=;
+ b=YZ1spUDsoQSumwU5ms65bbRD59HwEgsrWj2rM6pzhffRzgqV1PxeYu/JgXGvqnmpLk
+ f+zyY+aarJCy2seycsaTD5uSVQQWPhJyMHUlr8lrlPLfJERLyrFkGnUnbY6PfuSugAT8
+ z3r8Q1Lcoo713N2jV3U0mByPiZlksM6394UghBC0wHZhA6gUGpTUx9nCdmP/jplV9dVr
+ csu5EWdKih7rz+Ud779Jw6E8e3wL8usiClPZqcEO4KRF/RzNvClPsIsf4jzIFrvxpD3b
+ jM7Z+Z9wLmIcRnvtGaphEHlKj5kPfYi9NlCuKVuySxwK0di7aYHG3YXKyqmsT1l+rb4d 4ibQ==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass header.i=@gmail.com
+ header.s=20210112 header.b=JAi8mtUW; spf=pass (google.com: domain of
+ olikraus@gmail.com designates 209.85.220.41 as permitted sender)
+ smtp.mailfrom=olikraus@gmail.com; dmarc=pass (p=NONE sp=QUARANTINE dis=NONE)
+ header.from=gmail.com
+Return-Path: <olikraus@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com.
+ [209.85.220.41]) by mx.google.com with SMTPS id
+ h1-20020a05600c414100b003a6025a2cd0sor1291091wmm.31.2022.09.01.04.31.25 for
+ <steveben@gmail.com> (Google Transport Security); Thu, 01 Sep 2022 04:31:25
+ -0700 (PDT)
+Received-SPF: pass (google.com: domain of olikraus@gmail.com designates
+ 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com; dkim=pass header.i=@gmail.com
+ header.s=20210112 header.b=JAi8mtUW; spf=pass (google.com: domain of
+ olikraus@gmail.com designates 209.85.220.41 as permitted sender)
+ smtp.mailfrom=olikraus@gmail.com; dmarc=pass (p=NONE sp=QUARANTINE dis=NONE)
+ header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :from:to:cc; bh=BhtVm1VBWlIJGMUWG2Fq9+KtpxGBkCDsuo7c6bdALb4=;
+ b=JAi8mtUWTaBTW5YEFPTnJZu6bnPlpMbD7DBBNp4gi/LGlQQxNW98/Hdr6O0c5rxmYE
+ je7JOTVo1xFBjoJyRzc/Dai87o43eYYgiIYmksvLimKu1tdTRR+CNCrdJotL05GIQAKK
+ UC+GpZOHnjmroYNHClyPwOcRWe6XRG3tJoHdFkoejYZ+Qc5vFWqylvb1n5raS2hf1d3G
+ /qeA14dXwvecaivd0VQgQCKZT51KB9O9as+0E3GMD999mUfWo0Nd0Uhw9LE/dOHt+TFM
+ hw/B4kWD6gQJm0X76AhqEczMfXDQzT/cuwb8qg+kycMVnZlZMXcZg7SGdyc+Ig1naDWg PcVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=1e100.net;
+ s=20210112;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :x-gm-message-state:from:to:cc;
+ bh=BhtVm1VBWlIJGMUWG2Fq9+KtpxGBkCDsuo7c6bdALb4=;
+ b=qCLVaUPvspREmDNBPZ6peWV6L7yJ8xyXCdO2g2v7nnGvY915vz0I1sCabO4V5me+7v
+ zheMwugSBbuDqteCkQgSogTfkCBc2f35ZgMzfGqnmKvbQW33KKZ33l0/LhxoEi7QqKDT
+ YkReoxbR8a1YlcWc1EUgD9pznkcdQ3D3gn43vpmg7fz45dRyNGwiJzVrq/RuedOY8w7N
+ /5vHl9TPHjzlQnwObeVfuCXbLFHo/L+F/Mq12fU7kpUqSiY3snXdr27jj28Sx+MI9f17
+ IN7MTfDDuayLFOLEPuLtkhpJZexCqHNL7AmuR07ezwNFkO//w/2IXsLcpa9BkyCcuvRw nQ2A==
+X-Gm-Message-State: ACgBeo0I/DXearTdDs4BxY7G6K4WRAhv/ttb2ZIwUt1nM0XqyoqhrpMC
+ 5v+/RHLtONyPG5TmwCMQITH7QkjbwCW40FaaikDET6DEM9c=
+X-Google-Smtp-Source: AA6agR4wxtKCpHq0Pd+MINBOkclOfvWiMSHPYa9ZrX20+r+yGC8ZuZNMgLgjij7sSPYB9w7bh7m4U3fmFGOhsGTBJCQ=
+X-Received: by 2002:a05:600c:350:b0:3a5:3473:1c23 with SMTP id
+ u16-20020a05600c035000b003a534731c23mr5076094wmd.9.1662031884793; Thu, 01 Sep
+ 2022 04:31:24 -0700 (PDT)
+MIME-Version: 1.0
+References: <em6a91a6ec-da00-4e45-82c9-1738af30068f@6f291a3c.com>
+In-Reply-To: <em6a91a6ec-da00-4e45-82c9-1738af30068f@6f291a3c.com>
+From: Oliver Kraus <olikraus@gmail.com>
+Date: Thu, 1 Sep 2022 13:31:13 +0200
+Message-ID: <CAAmht__jXd+rm0WGaeHK2NWRirULMC+231zV9dhMifcbBonzVA@mail.gmail.com>
+Subject: Re: U8x8lib.h and I2C
+To: Steven Bennett <steveben@gmail.com>
+Content-Type: multipart/alternative; boundary="000000000000193c9b05e79bf413"
+
+--000000000000193c9b05e79bf413
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Steven
+
+You need to manually assign the I2C address if the address deviates from
+the default address of the display:
+https://github.com/olikraus/u8g2/wiki/u8x8reference#seti2caddress
+
+Please consider the u8g2 project page for questions / issues.
+
+Oliver
+
+On Thu, Sep 1, 2022 at 10:48 AM Steven Bennett <steveben@gmail.com> wrote:
+
+> Hello Oliver,
+>
+> I'm using your U8x8lib.h library with a Seeeduino Xiao and it's expansion
+> board, including an OLED display at I2C address 0x78.  As the display
+> address is not set in the OLED example provided with the expansion board
+> could you explain to me how communication is established?  Does your
+> library auto-detect the display?
+>
+> Many thanks for your help and providing the library.
+>
+> Regards
+>
+> Steve Bennett
+>
+> 7 Holme Park
+> High Bentham
+> LA2 7ND
+>
+> What 3 words location: farmland.fish.branching
+>
+> 07790 735822 Mobile
+>
+>
+
+--000000000000193c9b05e79bf413
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Steven</div><div><br></div><div>You need to manual=
+ly assign the I2C address if the address deviates from the default address=
+ of the display: <a href=3D"https://github.com/olikraus/u8g2/wiki/u8x8refere=
+nce#seti2caddress">https://github.com/olikraus/u8g2/wiki/u8x8reference#seti=
+2caddress</a></div><div><br></div><div>Please consider the u8g2 project pag=
+e for questions / issues.<br></div><div><br></div><div>Oliver<br></div></di=
+v><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On T=
+hu, Sep 1, 2022 at 10:48 AM Steven Bennett &lt;<a href=3D"mailto:steveben@g=
+mail.com">steveben@gmail.com</a>&gt; wrote:<br></div><blockquote class=3D"g=
+mail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex"><div class=3D"msg1098265262444673626">
+
+
+
+<div style=3D"font-size:10pt;font-family:Tahoma;font-style:normal;font-weig=
+ht:normal;color:rgb(0,0,0);background-color:rgb(255,255,255)">
+<div>Hello Oliver,</div><div><br></div><div>I&#39;m using your U8x8lib.h li=
+brary with a Seeeduino Xiao and it&#39;s expansion board, including an OLED =
+display at I2C address 0x78.=C2=A0 As the display address is not set in th=
+e OLED example provided with the expansion board could you explain to me ho=
+w communication is established?=C2=A0 Does your library auto-detect the dis=
+play?</div><div><br></div><div>Many thanks for your help and providing the=
+ library.</div>
+<div><br></div><div id=3D"m_1098265262444673626signature_old"><div id=3D"m_=
+1098265262444673626x7c16e86b7c574bf">Regards<br><br>Steve Bennett<br><br>7=
+ Holme Park<br>High Bentham<br>LA2 7ND<br><br>What 3 words location: farmlan=
+d.fish.branching<br><br>07790 735822 Mobile<br><br></div></div>
+</div></div></blockquote></div>
+
+--000000000000193c9b05e79bf413--
